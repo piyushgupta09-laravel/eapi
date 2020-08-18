@@ -1,0 +1,520 @@
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi
+$ php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.84 seconds)
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:model Model/Product -a
+Model created successfully.
+Factory created successfully.
+Created Migration: 2020_08_18_115028_create_products_table
+Seeder created successfully.
+Controller created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:model Model/Review -a
+Model created successfully.
+Factory created successfully.
+Created Migration: 2020_08_18_115044_create_reviews_table
+Seeder created successfully.
+Controller created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan route:list
+
+   Illuminate\Contracts\Container\BindingResolutionException
+
+  Target class [App\Http\Controllers\Api/ProductController] does not exist.
+
+  at C:\xampp\htdocs\Topics\eapi\vendor\laravel\framework\src\Illuminate\Container\Container.php:811
+    807|
+    808|         try {
+    809|             $reflector = new ReflectionClass($concrete);
+    810|         } catch (ReflectionException $e) {
+  > 811|             throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
+    812|         }
+    813|
+    814|         // If the type is not instantiable, the developer is attempting to resolve
+    815|         // an abstract type such as an Interface or Abstract Class and there is
+
+  1   [internal]:0
+      Illuminate\Foundation\Console\RouteListCommand::Illuminate\Foundation\Console\{closure}(Object(Illuminate\Routing\Route))
+
+  2   C:\xampp\htdocs\Topics\eapi\vendor\laravel\framework\src\Illuminate\Container\Container.php:809
+      ReflectionException::("Class App\Http\Controllers\Api/ProductController does not exist")
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan route:list
++--------+-----------+------------------------+------------------+----------------------------------------------------+------------+
+| Domain | Method    | URI                    | Name             | Action                                             | Middleware |
++--------+-----------+------------------------+------------------+----------------------------------------------------+------------+
+|        | GET|HEAD  | /                      |                  | Closure                                            | web        |
+|        | GET|HEAD  | api/products           | products.index   | App\Http\Controllers\Api\ProductController@index   | api        |
+|        | POST      | api/products           | products.store   | App\Http\Controllers\Api\ProductController@store   | api        |
+|        | GET|HEAD  | api/products/{product} | products.show    | App\Http\Controllers\Api\ProductController@show    | api        |
+|        | PUT|PATCH | api/products/{product} | products.update  | App\Http\Controllers\Api\ProductController@update  | api        |
+|        | DELETE    | api/products/{product} | products.destroy | App\Http\Controllers\Api\ProductController@destroy | api        |
+|        | GET|HEAD  | api/reviews            | reviews.index    | App\Http\Controllers\Api\ReviewController@index    | api        |
+|        | POST      | api/reviews            | reviews.store    | App\Http\Controllers\Api\ReviewController@store    | api        |
+|        | GET|HEAD  | api/reviews/{review}   | reviews.show     | App\Http\Controllers\Api\ReviewController@show     | api        |
+|        | PUT|PATCH | api/reviews/{review}   | reviews.update   | App\Http\Controllers\Api\ReviewController@update   | api        |
+|        | DELETE    | api/reviews/{review}   | reviews.destroy  | App\Http\Controllers\Api\ReviewController@destroy  | api        |
+|        | GET|HEAD  | api/user               |                  | Closure                                            | api        |
+|        |           |                        |                  |                                                    | auth:api   |
++--------+-----------+------------------------+------------------+----------------------------------------------------+------------+
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan route:list
++--------+-----------+-------------------------------+------------------+----------------------------------------------------+------------+
+| Domain | Method    | URI                           | Name             | Action                                             | Middleware |
++--------+-----------+-------------------------------+------------------+----------------------------------------------------+------------+
+|        | GET|HEAD  | /                             |                  | Closure                                            | web        |
+|        | GET|HEAD  | api/products                  | products.index   | App\Http\Controllers\Api\ProductController@index   | api        |
+|        | POST      | api/products                  | products.store   | App\Http\Controllers\Api\ProductController@store   | api        |
+|        | GET|HEAD  | api/products/reviews          | reviews.index    | App\Http\Controllers\Api\ReviewController@index    | api        |
+|        | POST      | api/products/reviews          | reviews.store    | App\Http\Controllers\Api\ReviewController@store    | api        |
+|        | GET|HEAD  | api/products/reviews/{review} | reviews.show     | App\Http\Controllers\Api\ReviewController@show     | api        |
+|        | PUT|PATCH | api/products/reviews/{review} | reviews.update   | App\Http\Controllers\Api\ReviewController@update   | api        |
+|        | DELETE    | api/products/reviews/{review} | reviews.destroy  | App\Http\Controllers\Api\ReviewController@destroy  | api        |
+|        | GET|HEAD  | api/products/{product}        | products.show    | App\Http\Controllers\Api\ProductController@show    | api        |
+|        | PUT|PATCH | api/products/{product}        | products.update  | App\Http\Controllers\Api\ProductController@update  | api        |
+|        | DELETE    | api/products/{product}        | products.destroy | App\Http\Controllers\Api\ProductController@destroy | api        |
+|        | GET|HEAD  | api/user                      |                  | Closure                                            | api        |
+|        |           |                               |                  |                                                    | auth:api   |
++--------+-----------+-------------------------------+------------------+----------------------------------------------------+------------+
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan route:list
++--------+-----------+-----------------------------------------+------------------+----------------------------------------------------+------------+
+| Domain | Method    | URI                                     | Name             | Action                                             | Middleware |
++--------+-----------+-----------------------------------------+------------------+----------------------------------------------------+------------+
+|        | GET|HEAD  | /                                       |                  | Closure                                            | web        |
+|        | GET|HEAD  | api/products                            | products.index   | App\Http\Controllers\Api\ProductController@index   | api        |
+|        | POST      | api/products                            | products.store   | App\Http\Controllers\Api\ProductController@store   | api        |
+|        | GET|HEAD  | api/products/{product}                  | products.show    | App\Http\Controllers\Api\ProductController@show    | api        |
+|        | PUT|PATCH | api/products/{product}                  | products.update  | App\Http\Controllers\Api\ProductController@update  | api        |
+|        | DELETE    | api/products/{product}                  | products.destroy | App\Http\Controllers\Api\ProductController@destroy | api        |
+|        | GET|HEAD  | api/products/{product}/reviews          | reviews.index    | App\Http\Controllers\Api\ReviewController@index    | api        |
+|        | POST      | api/products/{product}/reviews          | reviews.store    | App\Http\Controllers\Api\ReviewController@store    | api        |
+|        | GET|HEAD  | api/products/{product}/reviews/{review} | reviews.show     | App\Http\Controllers\Api\ReviewController@show     | api        |
+|        | PUT|PATCH | api/products/{product}/reviews/{review} | reviews.update   | App\Http\Controllers\Api\ReviewController@update   | api        |
+|        | DELETE    | api/products/{product}/reviews/{review} | reviews.destroy  | App\Http\Controllers\Api\ReviewController@destroy  | api        |
+|        | GET|HEAD  | api/user                                |                  | Closure                                            | api        |
+|        |           |                                         |                  |                                                    | auth:api   |
++--------+-----------+-----------------------------------------+------------------+----------------------------------------------------+------------+
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   routes/api.php
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        app/Http/Controllers/Api/
+        app/Model/
+        database/factories/ProductFactory.php
+        database/factories/ReviewFactory.php
+        database/migrations/2020_08_18_115028_create_products_table.php
+        database/migrations/2020_08_18_115044_create_reviews_table.php
+        database/seeds/ProductSeeder.php
+        database/seeds/ReviewSeeder.php
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git add .
+warning: LF will be replaced by CRLF in routes/api.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ProductController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ReviewController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Model/Product.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Model/Review.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/factories/ProductFactory.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/factories/ReviewFactory.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/migrations/2020_08_18_115028_create_products_table.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/migrations/2020_08_18_115044_create_reviews_table.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/ProductSeeder.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/ReviewSeeder.php.
+The file will have its original line endings in your working directory
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git commit -m "Created product & review --all"
+[master 58df400] Created product & review --all
+ 11 files changed, 315 insertions(+)
+ create mode 100644 app/Http/Controllers/Api/ProductController.php
+ create mode 100644 app/Http/Controllers/Api/ReviewController.php
+ create mode 100644 app/Model/Product.php
+ create mode 100644 app/Model/Review.php
+ create mode 100644 database/factories/ProductFactory.php
+ create mode 100644 database/factories/ReviewFactory.php
+ create mode 100644 database/migrations/2020_08_18_115028_create_products_table.php
+ create mode 100644 database/migrations/2020_08_18_115044_create_reviews_table.php
+ create mode 100644 database/seeds/ProductSeeder.php
+ create mode 100644 database/seeds/ReviewSeeder.php
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git oush
+git: 'oush' is not a git command. See 'git --help'.
+
+The most similar command is
+        push
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git push
+Enumerating objects: 33, done.
+Counting objects: 100% (33/33), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (23/23), done.
+Writing objects: 100% (23/23), 3.04 KiB | 1.01 MiB/s, done.
+Total 23 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (7/7), completed with 3 local objects.
+To https://github.com/piyushgupta09-laravel/eapi.git
+   94168c1..58df400  master -> master
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:trait ModelAttributes
+
+
+  Command "make:trait" is not defined.
+
+  Did you mean one of these?
+      make:cast
+      make:channel
+      make:command
+      make:component
+      make:controller
+      make:event
+      make:exception
+      make:factory
+      make:job
+      make:listener
+      make:mail
+      make:middleware
+      make:migration
+      make:model
+      make:notification
+      make:observer
+      make:policy
+      make:provider
+      make:request
+      make:resource
+      make:rule
+      make:seeder
+      make:test
+
+
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan migrate:fresh --seed
+Dropped all tables successfully.
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.49 seconds)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (0.56 seconds)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (0.33 seconds)
+Migrating: 2020_08_18_115028_create_products_table
+Migrated:  2020_08_18_115028_create_products_table (0.21 seconds)
+Migrating: 2020_08_18_115044_create_reviews_table
+Migrated:  2020_08_18_115044_create_reviews_table (2.38 seconds)
+
+   Illuminate\Contracts\Container\BindingResolutionException
+
+  Target class [UserSeeder] does not exist.
+
+  at C:\xampp\htdocs\Topics\eapi\vendor\laravel\framework\src\Illuminate\Container\Container.php:811
+    807|
+    808|         try {
+    809|             $reflector = new ReflectionClass($concrete);
+    810|         } catch (ReflectionException $e) {
+  > 811|             throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
+    812|         }
+    813|
+    814|         // If the type is not instantiable, the developer is attempting to resolve
+    815|         // an abstract type such as an Interface or Abstract Class and there is
+
+  1   C:\xampp\htdocs\Topics\eapi\vendor\laravel\framework\src\Illuminate\Container\Container.php:809
+      ReflectionException::("Class UserSeeder does not exist")
+
+  2   C:\xampp\htdocs\Topics\eapi\vendor\laravel\framework\src\Illuminate\Container\Container.php:809
+      ReflectionClass::__construct("UserSeeder")
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:seeder UserSeeder
+Seeder created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan migrate:fresh --seed
+Dropped all tables successfully.
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:  2014_10_12_000000_create_users_table (0.44 seconds)
+Migrating: 2014_10_12_100000_create_password_resets_table
+Migrated:  2014_10_12_100000_create_password_resets_table (0.93 seconds)
+Migrating: 2019_08_19_000000_create_failed_jobs_table
+Migrated:  2019_08_19_000000_create_failed_jobs_table (0.36 seconds)
+Migrating: 2020_08_18_115028_create_products_table
+Migrated:  2020_08_18_115028_create_products_table (0.29 seconds)
+Migrating: 2020_08_18_115044_create_reviews_table
+Migrated:  2020_08_18_115044_create_reviews_table (4.27 seconds)
+Seeding: UserSeeder
+Seeded:  UserSeeder (2.19 seconds)
+Seeding: ProductSeeder
+Seeded:  ProductSeeder (2.96 seconds)
+Seeding: ReviewSeeder
+Seeded:  ReviewSeeder (22.35 seconds)
+Database seeding completed successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan tinker
+Psy Shell v0.10.4 (PHP 7.4.7 — cli) by Justin Hileman
+>>> $p = App\Model\Product::find(5);
+=> App\Model\Product {#4047
+     id: 5,
+     title: "quas",
+     slug: "quas",
+     detail: "Cumque quia incidunt labore et ad. Alias optio qui incidunt est consequatur omnis. Et ad quo autem est non. Ut excepturi dolorem non. Est aut pariatur voluptates.",
+     price: 777,
+     discount: 15,
+     stock: 8,
+     created_at: "2020-08-18 12:17:11",
+     updated_at: "2020-08-18 12:17:11",
+   }
+>>> $p->reviews
+=> Illuminate\Database\Eloquent\Collection {#4055
+     all: [
+       App\Model\Review {#4056
+         id: 18,
+         body: "Ad voluptatibus enim veritatis eum delectus enim illo. Minus dolor dolores quas fugit. Sit corrupti aut est est provident. Adipisci enim enim nostrum tempore magnam hic.",
+         star: 4,
+         user_id: 42,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:15",
+         updated_at: "2020-08-18 12:17:15",
+       },
+       App\Model\Review {#4057
+         id: 39,
+         body: "Sit itaque voluptatem saepe non nulla. Beatae et et est magnam aut sint itaque odit.",
+         star: 4,
+         user_id: 7,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:16",
+         updated_at: "2020-08-18 12:17:16",
+       },
+       App\Model\Review {#4058
+         id: 50,
+         body: "Aspernatur voluptas libero numquam aut voluptatibus corrupti quis. Sint corrupti tempora porro distinctio unde. Aliquam assumenda voluptatum cumque et.",
+         star: 5,
+         user_id: 2,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:17",
+         updated_at: "2020-08-18 12:17:17",
+       },
+       App\Model\Review {#4059
+         id: 65,
+         body: "Aut iure aut laboriosam quo deserunt et ipsam quibusdam. Voluptatibus praesentium ab sint cumque aspernatur repudiandae nostrum. Velit enim nemo qui quidem velit ducimus.",
+         star: 0,
+         user_id: 48,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:19",
+         updated_at: "2020-08-18 12:17:19",
+       },
+       App\Model\Review {#4060
+         id: 120,
+         body: "Enim quis eveniet non aut autem magni commodi. Nihil aut ex ab est. Et in voluptates cumque fuga. Labore voluptatem cumque perferendis aut laudantium.",
+         star: 2,
+         user_id: 22,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:22",
+         updated_at: "2020-08-18 12:17:22",
+       },
+       App\Model\Review {#4061
+         id: 165,
+         body: "Praesentium corrupti aut quis tempore ullam. Necessitatibus in et delectus. Necessitatibus voluptas tempora quibusdam sed. Recusandae facere officiis corporis laborum.",
+         star: 4,
+         user_id: 1,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:24",
+         updated_at: "2020-08-18 12:17:24",
+       },
+     ],
+   }
+>>> $r = App\Model\Review::find(165);
+=> App\Model\Review {#4035
+     id: 165,
+     body: "Praesentium corrupti aut quis tempore ullam. Necessitatibus in et delectus. Necessitatibus voluptas tempora quibusdam sed. Recusandae facere officiis corporis laborum.",
+     star: 4,
+     user_id: 1,
+     product_id: 5,
+     created_at: "2020-08-18 12:17:24",
+     updated_at: "2020-08-18 12:17:24",
+   }
+>>> $r->product
+=> App\Model\Product {#4041
+     id: 5,
+     title: "quas",
+     slug: "quas",
+     detail: "Cumque quia incidunt labore et ad. Alias optio qui incidunt est consequatur omnis. Et ad quo autem est non. Ut excepturi dolorem non. Est aut pariatur voluptates.",
+     price: 777,
+     discount: 15,
+     stock: 8,
+     created_at: "2020-08-18 12:17:11",
+     updated_at: "2020-08-18 12:17:11",
+   }
+>>> $r->user
+=> App\Model\User {#4052
+     id: 1,
+     name: "Mr. Kennedi Block",
+     email: "lavada37@example.org",
+     email_verified_at: "2020-08-18 12:17:08",
+     created_at: "2020-08-18 12:17:08",
+     updated_at: "2020-08-18 12:17:08",
+   }
+>>> $u = App\Model\User::find(1)
+=> App\Model\User {#4046
+     id: 1,
+     name: "Mr. Kennedi Block",
+     email: "lavada37@example.org",
+     email_verified_at: "2020-08-18 12:17:08",
+     created_at: "2020-08-18 12:17:08",
+     updated_at: "2020-08-18 12:17:08",
+   }
+>>> $u->reviews
+=> Illuminate\Database\Eloquent\Collection {#4071
+     all: [
+       App\Model\Review {#4072
+         id: 29,
+         body: "Laudantium aut qui sint itaque maxime. Perferendis modi ea sint maxime necessitatibus. Dolor iste odio ducimus consequatur sed eveniet quis.",
+         star: 5,
+         user_id: 1,
+         product_id: 3,
+         created_at: "2020-08-18 12:17:16",
+         updated_at: "2020-08-18 12:17:16",
+       },
+       App\Model\Review {#4073
+         id: 137,
+         body: "Molestiae laudantium voluptatem voluptate voluptas sapiente distinctio voluptatem. Cum esse ut saepe rerum animi. Fugiat debitis consectetur et optio.",
+         star: 4,
+         user_id: 1,
+         product_id: 30,
+         created_at: "2020-08-18 12:17:22",
+         updated_at: "2020-08-18 12:17:22",
+       },
+       App\Model\Review {#4074
+         id: 165,
+         body: "Praesentium corrupti aut quis tempore ullam. Necessitatibus in et delectus. Necessitatibus voluptas tempora quibusdam sed. Recusandae facere officiis corporis laborum.",
+         star: 4,
+         user_id: 1,
+         product_id: 5,
+         created_at: "2020-08-18 12:17:24",
+         updated_at: "2020-08-18 12:17:24",
+       },
+       App\Model\Review {#4075
+         id: 176,
+         body: "Vitae eum nihil officia aut. Nihil qui consectetur qui voluptatem fugiat explicabo sed. Molestias qui unde illum fugiat quia quidem. Consequatur et ratione officia voluptatem similique quia modi. Voluptatibus et dolorum ex rem.",
+         star: 1,
+         user_id: 1,
+         product_id: 7,
+         created_at: "2020-08-18 12:17:25",
+         updated_at: "2020-08-18 12:17:25",
+       },
+       App\Model\Review {#4076
+         id: 177,
+         body: "Ut officia beatae corrupti minus magni accusamus. Possimus itaque itaque nobis dicta tempora cupiditate. Eaque illum et aliquid deserunt. Consequatur et doloribus inventore dignissimos et.",
+         star: 0,
+         user_id: 1,
+         product_id: 41,
+         created_at: "2020-08-18 12:17:25",
+         updated_at: "2020-08-18 12:17:25",
+       },
+       App\Model\Review {#4077
+         id: 259,
+         body: "Aut omnis nisi ut quia quas libero est. Alias minus qui animi nostrum. Rerum eius et veritatis expedita.",
+         star: 1,
+         user_id: 1,
+         product_id: 30,
+         created_at: "2020-08-18 12:17:33",
+         updated_at: "2020-08-18 12:17:33",
+       },
+     ],
+   }
+>>>
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git add .
+warning: LF will be replaced by CRLF in app/Model/Product.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Model/Review.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/factories/ProductFactory.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/factories/ReviewFactory.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/factories/UserFactory.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/migrations/2020_08_18_115028_create_products_table.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/migrations/2020_08_18_115044_create_reviews_table.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/DatabaseSeeder.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/ProductSeeder.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/ReviewSeeder.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Model/User.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Traits/ModelAttributes.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in database/seeds/UserSeeder.php.
+The file will have its original line endings in your working directory
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git commit -m "Migration & Relations"
+[master 6a56321] Migration & Relations
+ 13 files changed, 91 insertions(+), 9 deletions(-)
+ rename app/{ => Model}/User.php (86%)
+ create mode 100644 app/Traits/ModelAttributes.php
+ create mode 100644 database/seeds/UserSeeder.php
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git push
+Enumerating objects: 39, done.
+Counting objects: 100% (39/39), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (21/21), done.
+Writing objects: 100% (22/22), 2.86 KiB | 976.00 KiB/s, done.
+Total 22 (delta 12), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (12/12), completed with 7 local objects.
+To https://github.com/piyushgupta09-laravel/eapi.git
+   58df400..6a56321  master -> master
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:resource Product/ProductCollection
+Resource collection created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$
