@@ -24,7 +24,7 @@ class ProductResource extends JsonResource
             'fprice' => $this->fprice(),
             'rating' => $this->ratings(),
             'href' => [
-                'reviews' => route('reviews.index', $this->id)
+                'reviews' => $this->reviews->count() > 0 ? route('reviews.index', $this->id) : 'No reviews yet'
             ]
         ];
     }
