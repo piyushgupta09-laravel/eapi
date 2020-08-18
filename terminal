@@ -655,3 +655,17 @@ Client secret: PjPTYGcoKyMkapI2v7Fr8NQMfOpRCKdeoFUtwaKb
 Password grant client created successfully.
 Client ID: 2
 Client secret: wA288EuLEvTT1bImaYEoWAQDUy6vjGjULfR4NCBp
+
+$ php artisan passport:install --force
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 3
+Client secret: yjdPIUk0VVovzky3OQYetXUVmrUynQNa6Wc17T1D
+Password grant client created successfully.
+Client ID: 4
+Client secret: Cfp9WSqkNsDRZxAfvST7Vaz0AHtqFupVChWgyYFv
+
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:request ProductRequest
+Request created successfully.
