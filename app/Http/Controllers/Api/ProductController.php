@@ -91,9 +91,17 @@ class ProductController extends Controller
      * @param  \App\Model\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+        $product->title = $request->name;
+        $product->detail = $request->description;
+        $product->price = $request->bprice;
+        $product->discount = $request->drate;
+        $product->stock = $request->stock;
+        $product->update();
+        return response([
+            'data' => new ProductResource($product),
+        ], Response::HTTP_ACCEPTED);
     }
 
     /**
