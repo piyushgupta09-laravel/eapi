@@ -22,7 +22,7 @@ class ProductController extends Controller
         // Cummulative
         // return ProductResource::collection(Product::all());
         // Custom
-        return ProductCollection::collection(Product::all());
+        return ProductCollection::collection(Product::paginate(5));
     }
 
     /**
