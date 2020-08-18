@@ -517,4 +517,141 @@ $ php artisan make:resource Product/ProductCollection
 Resource collection created successfully.
 
 pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
-$
+$ git commit -m "Migration & Relations"
+[master 6a56321] Migration & Relations
+ 13 files changed, 91 insertions(+), 9 deletions(-)
+ rename app/{ => Model}/User.php (86%)
+ create mode 100644 app/Traits/ModelAttributes.php
+ create mode 100644 database/seeds/UserSeeder.php
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:resource Product/ProductResource
+Resource created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git add .
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ProductController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Model/Product.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Resources/Product/ProductCollection.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Resources/Product/ProductResource.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in terminal.
+The file will have its original line endings in your working directory
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git commit -m "ProductResource"
+[master f9c6160] ProductResource
+ 5 files changed, 603 insertions(+), 2 deletions(-)
+ create mode 100644 app/Http/Resources/Product/ProductCollection.php
+ create mode 100644 app/Http/Resources/Product/ProductResource.php
+ create mode 100644 terminal
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git add .
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ProductController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Resources/Product/ProductCollection.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Resources/Product/ProductResource.php.
+The file will have its original line endings in your working directory
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git commit -m "ProductCollection"
+[master 414e5ae] ProductCollection
+ 3 files changed, 19 insertions(+), 5 deletions(-)
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan make:resource ReviewResource
+Resource created successfully.
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git add .
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ProductController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Controllers/Api/ReviewController.php.
+The file will have its original line endings in your working directory
+warning: LF will be replaced by CRLF in app/Http/Resources/ReviewResource.php.
+The file will have its original line endings in your working directory
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git commit -m "ReviewResource"
+[master a5f053c] ReviewResource
+ 3 files changed, 28 insertions(+), 3 deletions(-)
+ create mode 100644 app/Http/Resources/ReviewResource.php
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ git push
+Enumerating objects: 43, done.
+Counting objects: 100% (43/43), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (33/33), done.
+Writing objects: 100% (35/35), 7.99 KiB | 743.00 KiB/s, done.
+Total 35 (delta 13), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (13/13), completed with 2 local objects.
+To https://github.com/piyushgupta09-laravel/eapi.git
+   6a56321..a5f053c  master -> master
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ composer require laravel/passport
+Using version ^9.3 for laravel/passport
+./composer.json has been updated
+Loading composer repositories with package information
+Updating dependencies (including require-dev)
+Package operations: 13 installs, 0 updates, 0 removals
+  - Installing symfony/psr-http-message-bridge (v2.0.1): Loading from cache
+  - Installing phpseclib/phpseclib (2.0.28): Loading from cache
+  - Installing psr/http-factory (1.0.1): Loading from cache
+  - Installing php-http/message-factory (v1.0.2): Loading from cache
+  - Installing nyholm/psr7 (1.3.0): Loading from cache
+  - Installing defuse/php-encryption (v2.2.1): Loading from cache
+  - Installing lcobucci/jwt (3.3.2): Loading from cache
+  - Installing league/event (2.2.0): Loading from cache
+  - Installing league/oauth2-server (8.1.1): Loading from cache
+  - Installing laminas/laminas-zendframework-bridge (1.0.4): Loading from cache
+  - Installing laminas/laminas-diactoros (2.3.1): Loading from cache
+  - Installing firebase/php-jwt (v5.2.0): Loading from cache
+  - Installing laravel/passport (v9.3.2): Loading from cache
+phpseclib/phpseclib suggests installing ext-libsodium (SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.)
+phpseclib/phpseclib suggests installing ext-mcrypt (Install the Mcrypt extension in order to speed up a few other cryptographic operations.)
+phpseclib/phpseclib suggests installing ext-gmp (Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.)
+Package phpunit/php-token-stream is abandoned, you should avoid using it. No replacement was suggested.
+Writing lock file
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+Discovered Package: facade/ignition
+Discovered Package: fideloper/proxy
+Discovered Package: fruitcake/laravel-cors
+Discovered Package: laravel/passport
+Discovered Package: laravel/tinker
+Discovered Package: nesbot/carbon
+Discovered Package: nunomaduro/collision
+Package manifest generated successfully.
+55 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan migrate
+Migrating: 2016_06_01_000001_create_oauth_auth_codes_table
+Migrated:  2016_06_01_000001_create_oauth_auth_codes_table (1.18 seconds)
+Migrating: 2016_06_01_000002_create_oauth_access_tokens_table
+Migrated:  2016_06_01_000002_create_oauth_access_tokens_table (1.04 seconds)
+Migrating: 2016_06_01_000003_create_oauth_refresh_tokens_table
+Migrated:  2016_06_01_000003_create_oauth_refresh_tokens_table (1.2 seconds)
+Migrating: 2016_06_01_000004_create_oauth_clients_table
+Migrated:  2016_06_01_000004_create_oauth_clients_table (0.49 seconds)
+Migrating: 2016_06_01_000005_create_oauth_personal_access_clients_table
+Migrated:  2016_06_01_000005_create_oauth_personal_access_clients_table (0.25 seconds)
+
+pglap@LAPTOP-4T47VIQP MINGW64 /c/xampp/htdocs/Topics/eapi (master)
+$ php artisan passport:install
+Encryption keys generated successfully.
+Personal access client created successfully.
+Client ID: 1
+Client secret: PjPTYGcoKyMkapI2v7Fr8NQMfOpRCKdeoFUtwaKb
+Password grant client created successfully.
+Client ID: 2
+Client secret: wA288EuLEvTT1bImaYEoWAQDUy6vjGjULfR4NCBp
